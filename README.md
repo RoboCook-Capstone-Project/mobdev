@@ -1,0 +1,1 @@
+Ini adalah repository untuk aplikasi mobile Robocook. Akan ada dua branch pengerjaan, punya Ophi dan Razif. Semangat semua!!
