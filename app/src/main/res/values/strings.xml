@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">RoboCook</string>
+
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="welcome_page_heading">Welcome to RoboCook!</string>
+    <string name="welcome_page_description">Register to start being inspired of what to cook!</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="recipe_title">Title of The Recipe</string>
+    <string name="recipe_ingredients">Ingredients of The Recipe</string>
+    <string name="recipe_steps">Steps of The Recipe</string>
+
 </resources>
