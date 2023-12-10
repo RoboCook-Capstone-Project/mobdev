@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".razif.RegisterActivity">
+    tools:context=".razif.ui.register.RegisterActivity">
 
     <ProgressBar
         android:id="@+id/pbRegister"
@@ -135,7 +135,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btSignup"
+        android:id="@+id/btRegister"
         android:layout_width="0dp"
         android:layout_height="65dp"
         android:layout_marginTop="35dp"

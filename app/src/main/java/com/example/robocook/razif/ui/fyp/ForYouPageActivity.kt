@@ -1,4 +1,4 @@
-package com.example.robocook.razif
+package com.example.robocook.razif.ui.fyp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

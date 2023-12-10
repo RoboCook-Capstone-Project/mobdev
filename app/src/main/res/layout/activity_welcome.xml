@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".razif.WelcomeActivity">
+    tools:context=".razif.ui.welcome.WelcomeActivity">
 
     <ImageView
         android:id="@+id/ivBannerWelcome"
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvWelcomeDescription" />
 
     <Button
-        android:id="@+id/btSignup"
+        android:id="@+id/btRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
