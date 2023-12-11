@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.robocook.razif.data.user.UserData
+import com.example.robocook.razif.ui.fyp.ForYouPageActivity
+import com.example.robocook.razif.ui.fyp.ForYouPageViewModel
 import com.example.robocook.razif.ui.login.LoginViewModel
 import com.example.robocook.razif.ui.register.RegisterViewModel
 
@@ -20,6 +22,10 @@ class ViewModelFactory(private val userData: UserData, private val context : Con
 
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(userData) as T
+            }
+
+            modelClass.isAssignableFrom(ForYouPageViewModel::class.java) -> {
+                ForYouPageViewModel(userData) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

@@ -30,8 +30,22 @@ class RegisterViewModel(private val userData: UserData) : ViewModel() {
                 call: Call<RegisterResponse>,
                 response: Response<RegisterResponse>
             ) {
-                _isRegistered.value = false
-                _isRegistered.value = response.message() == "User created successfully"
+
+                val responseBody = response.body()
+                _isLoadingRegister.value = false
+
+                if (response.isSuccessful && responseBody != null) {
+                    if (!responseBody.error) {
+                        _isRegistered.value = true
+                        Log.d("Register ViewModel", "Successfully registered user!")
+                    } else {
+                        _isRegistered.value = false
+                        Log.e("Register ViewModel", "Registration failed: ${responseBody.message}")
+                    }
+                } else {
+                    _isRegistered.value = false
+                    Log.e("Register ViewModel", "Registration failed with code: ${response.code()}")
+                }
             }
 
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {

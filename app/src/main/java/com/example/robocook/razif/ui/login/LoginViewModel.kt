@@ -23,26 +23,32 @@ class LoginViewModel(private val userData: UserData) : ViewModel() {
     val loginResponse: LiveData<LoginResponse?> = _loginResponse
 
     fun userLogin(email: String, password: String) {
-
         _isLoadingLogin.value = true
 
         val client = ApiConfig.getApiService().userLogin(email, password)
-        client.enqueue(object  : Callback<LoginResponse> {
+        client.enqueue(object : Callback<LoginResponse> {
 
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+
                 val responseBody = response.body()
                 _loginResponse.value = responseBody
                 _isLoadingLogin.value = false
+
                 if (response.isSuccessful) {
-                    saveUserToken(responseBody?.login_result?.token.toString())
+                    if (responseBody?.error == false) {
+                        saveUserToken(responseBody.login_result?.token.orEmpty())
+                        Log.d("LoginViewModel", "Berhasil login cuy!")
+                    } else {
+                        Log.e("LoginViewModel", "userLogin failed: ${responseBody?.message}")
+                    }
                 } else {
-                    Log.e("LoginViewModel", "userLogin get no response")
+                    Log.e("LoginViewModel", "userLogin failed with code: ${response.code()}")
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.e("LoginViewModel", "userLogin function doesn't work")
-
+                _isLoadingLogin.value = false
+                Log.e("LoginViewModel", "userLogin function failed with exception: ${t.message}")
             }
 
         })

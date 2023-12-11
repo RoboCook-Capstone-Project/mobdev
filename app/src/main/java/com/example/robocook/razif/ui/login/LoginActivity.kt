@@ -20,6 +20,8 @@ import com.example.robocook.R
 import com.example.robocook.databinding.ActivityLoginBinding
 import com.example.robocook.razif.data.response.LoginResponse
 import com.example.robocook.razif.data.user.UserData
+import com.example.robocook.razif.ui.fyp.ForYouPageActivity
+import com.example.robocook.razif.ui.fyp.ForYouPageViewModel
 import com.example.robocook.razif.ui.helper.ViewModelFactory
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "userdata")
@@ -140,7 +142,7 @@ class LoginActivity : AppCompatActivity() {
                 setTitle("Success!")
                 setMessage("Your login is successful.")
                 setPositiveButton("Continue") { _, _ ->
-                    val intent = Intent(context, MainActivity::class.java)
+                    val intent = Intent(context, ForYouPageActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
                     finish()

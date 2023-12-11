@@ -80,7 +80,7 @@ class RegisterActivity : AppCompatActivity() {
 
                 else -> {
 
-                    registerViewModel.userRegister(tvName, tvEmail, tvPassword)
+                    registerViewModel.userRegister(tvEmail, tvName, tvPassword)
                     registerViewModel.isRegistered.observe(this) { validationCheck(it) }
                     registerViewModel.isLoadingRegister.observe(this) { showLoadingRegister(it) }
 
