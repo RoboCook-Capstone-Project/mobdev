@@ -3,6 +3,7 @@ package com.example.robocook.razif.ui.helper
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.robocook.razif.data.database.helper.Injection
 import com.example.robocook.razif.data.user.UserData
 import com.example.robocook.razif.ui.fyp.ForYouPageActivity
 import com.example.robocook.razif.ui.fyp.ForYouPageViewModel
@@ -25,7 +26,8 @@ class ViewModelFactory(private val userData: UserData, private val context : Con
             }
 
             modelClass.isAssignableFrom(ForYouPageViewModel::class.java) -> {
-                ForYouPageViewModel(userData) as T
+                @Suppress("UNCHECKED_CAST")
+                return ForYouPageViewModel(userData, Injection.provideRepository(context)) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

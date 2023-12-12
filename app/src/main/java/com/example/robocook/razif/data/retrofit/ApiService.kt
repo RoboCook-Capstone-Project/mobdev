@@ -1,11 +1,15 @@
 package com.example.robocook.razif.data.retrofit
 
+import com.example.robocook.razif.data.response.ForYouPageResponse
 import com.example.robocook.razif.data.response.LoginResponse
 import com.example.robocook.razif.data.response.RegisterResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -23,5 +27,12 @@ interface ApiService {
         @Field("name") name: String,
         @Field("password") password: String
     ): Call<RegisterResponse>
+
+    @GET("api/recipes")
+    suspend fun fetchAllRecipe(
+        @Header("Authorization") token: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int,
+    ): ForYouPageResponse
 
 }

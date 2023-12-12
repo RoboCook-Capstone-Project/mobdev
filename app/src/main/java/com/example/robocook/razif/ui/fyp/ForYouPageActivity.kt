@@ -7,26 +7,47 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.robocook.R
+import com.example.robocook.databinding.ActivityForYouPageBinding
 import com.example.robocook.razif.data.user.UserData
 import com.example.robocook.razif.ui.helper.ViewModelFactory
 import com.example.robocook.razif.ui.welcome.WelcomeActivity
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "userdata")
+
 class ForYouPageActivity : AppCompatActivity() {
+
     private lateinit var forYouPageViewModel: ForYouPageViewModel
+
+    private lateinit var adapter: RecipeAdapter
+
+    private lateinit var binding: ActivityForYouPageBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_for_you_page)
+        binding = ActivityForYouPageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val layoutManager = LinearLayoutManager(this)
+        binding.rvRecipe.layoutManager = layoutManager
+        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+        binding.rvRecipe.addItemDecoration(itemDecoration)
+
         setupView()
         setupViewModel()
+
     }
+
     private fun setupView() {
 
         @Suppress("DEPRECATION")
@@ -39,6 +60,11 @@ class ForYouPageActivity : AppCompatActivity() {
             )
         }
 
+        val layoutManager = LinearLayoutManager(this)
+        binding.rvRecipe.layoutManager = layoutManager
+        adapter = RecipeAdapter()
+        binding.rvRecipe.adapter = adapter
+
     }
 
     private fun setupViewModel() {
@@ -50,25 +76,19 @@ class ForYouPageActivity : AppCompatActivity() {
 
     }
 
-    override fun onResume() {
+    private fun setupAction(token: String) {
 
-        super.onResume()
-        hasLogin()
+        forYouPageViewModel.fetchRecipePaging(token).observe(this) {
+            binding.loSwipeRefresh.isRefreshing = false
+            adapter.submitData(lifecycle, it)
+        }
 
     }
-    private fun hasLogin() {
 
-        forYouPageViewModel.fetchToken().observe(this) {
+    private fun setupSwipeRefresh() {
 
-            if (it == "null") {
-
-                val intent = Intent(this, WelcomeActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-                finish()
-
-            }
-
+        binding.loSwipeRefresh.setOnRefreshListener {
+            adapter.refresh()
         }
 
     }
@@ -88,6 +108,43 @@ class ForYouPageActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+
+    }
+
+    private fun hasLogin() {
+
+        forYouPageViewModel.fetchToken().observe(this) {
+
+            if (it == "null") {
+
+                val intent = Intent(this, WelcomeActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                finish()
+
+            } else {
+
+                setupAction("Bearer $it")
+                setupSwipeRefresh()
+
+            }
+
+        }
+
+        forYouPageViewModel.isLoadingMain.observe(this) { showLoadingMain(it) }
+
+    }
+
+    override fun onResume() {
+
+        super.onResume()
+        hasLogin()
+
+    }
+
+    private fun showLoadingMain(isLoadingMain: Boolean) {
+
+        binding.pb.visibility = if (isLoadingMain) View.VISIBLE else View.GONE
 
     }
 
