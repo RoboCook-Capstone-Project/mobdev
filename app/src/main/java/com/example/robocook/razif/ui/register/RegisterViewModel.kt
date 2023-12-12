@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.robocook.razif.data.response.RegisterResponse
+import com.example.robocook.razif.data.response.AddToFavoriteResponse
 import com.example.robocook.razif.data.retrofit.ApiConfig
 import com.example.robocook.razif.data.user.UserData
 import retrofit2.Call
@@ -24,11 +24,11 @@ class RegisterViewModel(private val userData: UserData) : ViewModel() {
         _isLoadingRegister.value = true
 
         val client = ApiConfig.getApiService().userRegister(email, name, password)
-        client.enqueue(object:Callback<RegisterResponse> {
+        client.enqueue(object:Callback<AddToFavoriteResponse> {
 
             override fun onResponse(
-                call: Call<RegisterResponse>,
-                response: Response<RegisterResponse>
+                call: Call<AddToFavoriteResponse>,
+                response: Response<AddToFavoriteResponse>
             ) {
 
                 val responseBody = response.body()
@@ -48,7 +48,7 @@ class RegisterViewModel(private val userData: UserData) : ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+            override fun onFailure(call: Call<AddToFavoriteResponse>, t: Throwable) {
                 Log.e("RegisterViewModel", "userRegister function doesn't work")
             }
 

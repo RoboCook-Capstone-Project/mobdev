@@ -60,6 +60,7 @@ class RecipeAdapter() : PagingDataAdapter<Recipe, RecipeAdapter.ViewHolder>(DIFF
 
             this.itemView.setOnClickListener {
                 val intentUserDetail = Intent(this.itemView.context, DetailActivity::class.java)
+                intentUserDetail.putExtra("id", data.id)
                 intentUserDetail.putExtra("image", data.image_url)
                 intentUserDetail.putExtra("title", data.title)
                 intentUserDetail.putExtra("author", data.author)
