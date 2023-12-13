@@ -3,6 +3,7 @@ package com.example.robocook.razif.data.retrofit
 import com.example.robocook.razif.data.response.ForYouPageResponse
 import com.example.robocook.razif.data.response.LoginResponse
 import com.example.robocook.razif.data.response.AddToFavoriteResponse
+import com.example.robocook.razif.data.response.GetUserFavoriteResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -41,5 +42,10 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Field("recipe_id") recipe_id: Int,
     ): Call<AddToFavoriteResponse>
+
+    @GET("api/recipes/favorites")
+    suspend fun fetchUserFavorite(
+        @Header("Authorization") token: String,
+    ): GetUserFavoriteResponse
 
 }
