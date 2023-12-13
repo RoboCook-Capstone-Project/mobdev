@@ -1,10 +1,8 @@
 package com.example.robocook.razif.ui.detail
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.example.robocook.razif.data.database.recipe.RecipeRepository
 import com.example.robocook.razif.data.user.UserData
 
 class DetailViewModel(private val userData: UserData) : ViewModel() {

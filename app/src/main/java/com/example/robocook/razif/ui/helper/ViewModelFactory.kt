@@ -7,7 +7,6 @@ import com.example.robocook.razif.data.database.helper.Injection
 import com.example.robocook.razif.data.user.UserData
 import com.example.robocook.razif.ui.detail.DetailViewModel
 import com.example.robocook.razif.ui.favorite.FavoriteRecipeViewModel
-import com.example.robocook.razif.ui.fyp.ForYouPageActivity
 import com.example.robocook.razif.ui.fyp.ForYouPageViewModel
 import com.example.robocook.razif.ui.login.LoginViewModel
 import com.example.robocook.razif.ui.register.RegisterViewModel

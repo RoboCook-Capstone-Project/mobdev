@@ -8,7 +8,6 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.robocook.R
 import com.example.robocook.databinding.ItemRecipeBinding
 import com.example.robocook.razif.data.database.recipe.Recipe
 import com.example.robocook.razif.ui.detail.DetailActivity

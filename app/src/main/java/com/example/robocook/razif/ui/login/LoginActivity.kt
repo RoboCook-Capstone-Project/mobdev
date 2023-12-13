@@ -15,13 +15,10 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.example.robocook.MainActivity
-import com.example.robocook.R
 import com.example.robocook.databinding.ActivityLoginBinding
 import com.example.robocook.razif.data.response.LoginResponse
 import com.example.robocook.razif.data.user.UserData
 import com.example.robocook.razif.ui.fyp.ForYouPageActivity
-import com.example.robocook.razif.ui.fyp.ForYouPageViewModel
 import com.example.robocook.razif.ui.helper.ViewModelFactory
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "userdata")

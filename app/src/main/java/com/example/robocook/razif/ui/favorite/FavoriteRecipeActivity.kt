@@ -7,13 +7,11 @@ import android.os.Bundle
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.robocook.R
 import com.example.robocook.razif.data.user.UserData
-import com.example.robocook.razif.ui.detail.DetailViewModel
 import com.example.robocook.razif.ui.helper.ViewModelFactory
 import com.example.robocook.razif.ui.welcome.WelcomeActivity
 

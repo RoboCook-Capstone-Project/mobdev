@@ -118,9 +118,9 @@ class DetailActivity : AppCompatActivity() {
     private fun addToFavorites() {
         val token = "Bearer " + getToken()
         if (token.isNotEmpty()) {
-            val apiService = ApiConfig.getApiService()
-            val call = apiService.addRecipeToFavorite(token, recipeId)
-            call.enqueue(object : Callback<AddToFavoriteResponse> {
+            val api = ApiConfig.getApiService()
+            val client = api.addRecipeToFavorite(token, recipeId)
+            client.enqueue(object : Callback<AddToFavoriteResponse> {
                 override fun onResponse(
                     call: Call<AddToFavoriteResponse>,
                     response: Response<AddToFavoriteResponse>
@@ -128,24 +128,21 @@ class DetailActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val addToFavoriteResponse = response.body()
                         if (addToFavoriteResponse != null && !addToFavoriteResponse.error) {
-                            // Handle success
                             Toast.makeText(
                                 this@DetailActivity,
-                                "Added to favorites successfully",
+                                "Added to your favorite!",
                                 Toast.LENGTH_SHORT
                             ).show()
                             Log.d("Add to favorite token", token)
                             Log.d("Add to favorite id", recipeId.toString())
                         } else {
-                            // Handle error
                             Toast.makeText(
                                 this@DetailActivity,
-                                "Failed to add to favorites",
+                                "Failed to add to favorite",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
                     } else {
-                        // Handle HTTP error
                         Toast.makeText(
                             this@DetailActivity,
                             "HTTP error: " + response.code(),
@@ -155,7 +152,6 @@ class DetailActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<AddToFavoriteResponse>, t: Throwable) {
-                    // Handle network failure
                     Toast.makeText(
                         this@DetailActivity,
                         "Network error: " + t.message,
@@ -164,8 +160,7 @@ class DetailActivity : AppCompatActivity() {
                 }
             })
         } else {
-            // Handle missing token
-            Toast.makeText(this, "Missing authentication token", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Missing token for authentication", Toast.LENGTH_SHORT).show()
         }
     }
 

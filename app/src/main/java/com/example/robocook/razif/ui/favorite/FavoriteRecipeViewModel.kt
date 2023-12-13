@@ -24,10 +24,10 @@ class FavoriteRecipeViewModel(private val userData: UserData) : ViewModel() {
                 if (!response.error) {
                     _recipeList.value = response.recipe_list
                 } else {
-                    Log.e("FavoriteViewModel", "API returned an error: ${response.message}")
+                    Log.e("FavoriteViewModel", "API error: ${response.message}")
                 }
             } catch (e: Exception) {
-                Log.e("FavoriteViewModel", "Exception during API call: ${e.message}", e)
+                Log.e("FavoriteViewModel", "Exception: ${e.message}", e)
             }
         }
     }
