@@ -5,15 +5,15 @@
     <group android:menuCategory="container">
 
         <item
-            android:id="@+id/optLogout"
-            android:icon="@drawable/ic_logout"
-            android:title="Logout"
-            app:showAsAction="collapseActionView|always" />
-
-        <item
             android:id="@+id/optFavorite"
             android:icon="@drawable/ic_favorite"
             android:title="Favorite"
+            app:showAsAction="collapseActionView|always" />
+
+        <item
+            android:id="@+id/optLogout"
+            android:icon="@drawable/ic_logout"
+            android:title="Logout"
             app:showAsAction="collapseActionView|always" />
 
     </group>

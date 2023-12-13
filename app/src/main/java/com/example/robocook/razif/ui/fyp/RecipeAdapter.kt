@@ -55,7 +55,8 @@ class RecipeAdapter() : PagingDataAdapter<Recipe, RecipeAdapter.ViewHolder>(DIFF
 
             Glide.with(this.itemView.context).load(data.image_url).into(binding.ivRecipePicture)
             binding.tvRecipeTitle.text = data.title
-            binding.tvRecipeAuthor.text = data.author
+            var recipeAuthor = data.author
+            binding.tvRecipeAuthor.text = "by $recipeAuthor"
             Log.d("Binder Recipe", data.image_url)
 
             this.itemView.setOnClickListener {

@@ -2,26 +2,29 @@ package com.example.robocook.razif.ui.fyp
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Canvas
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.robocook.R
 import com.example.robocook.databinding.ActivityForYouPageBinding
 import com.example.robocook.razif.data.user.UserData
 import com.example.robocook.razif.ui.favorite.FavoriteRecipeActivity
 import com.example.robocook.razif.ui.helper.ViewModelFactory
 import com.example.robocook.razif.ui.welcome.WelcomeActivity
+
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "userdata")
 
@@ -41,8 +44,12 @@ class ForYouPageActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvRecipe.layoutManager = layoutManager
-        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-        binding.rvRecipe.addItemDecoration(itemDecoration)
+
+        binding.rvRecipe.addItemDecoration(object :
+            DividerItemDecoration(this, LinearLayoutManager.VERTICAL) {
+            override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+            }
+        })
 
         setupView()
         setupViewModel()
