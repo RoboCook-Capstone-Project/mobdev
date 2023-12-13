@@ -59,12 +59,14 @@ class DetailActivity : AppCompatActivity() {
         tvAuthor.text = intentAuthor
 
         val intentIngredients = intent.getStringExtra("ingredients")
+        val ingredientsList = giveNumbering(intentIngredients.toString())
         val tvIngredients: TextView = binding.tvDetailRecipeIngredients
-        tvIngredients.text = intentIngredients
+        tvIngredients.text = ingredientsList.joinToString("\n")
 
         val intentSteps = intent.getStringExtra("steps")
+        val stepsList = giveNumbering(intentSteps.toString())
         val tvSteps: TextView = binding.tvDetailRecipeSteps
-        tvSteps.text = intentSteps
+        tvSteps.text = stepsList.joinToString("\n")
 
         detailViewModel = ViewModelProvider(
             this,
@@ -77,6 +79,12 @@ class DetailActivity : AppCompatActivity() {
             addToFavorites()
         }
 
+    }
+
+    private fun giveNumbering(text: String): List<String> {
+        return text.split("--").filter { it.isNotEmpty() }.mapIndexed { index, line ->
+            "${index + 1}. $line"
+        }
     }
 
     private fun playAnimation() {
