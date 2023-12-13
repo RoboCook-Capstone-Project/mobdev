@@ -81,19 +81,25 @@ class DetailActivity : AppCompatActivity() {
 
     private fun playAnimation() {
 
-        val ivRecipePicture = ObjectAnimator.ofFloat(binding.ivDetailRecipeImage, View.ALPHA, 1f).setDuration(800)
-        val tvRecipeTitle = ObjectAnimator.ofFloat(binding.tvDetailRecipeTitle, View.ALPHA, 1f).setDuration(800)
-        val tvRecipeAuthor = ObjectAnimator.ofFloat(binding.tvDetailRecipeAuthor, View.ALPHA, 1f).setDuration(800)
-        val tvRecipeIngredients = ObjectAnimator.ofFloat(binding.tvDetailRecipeIngredients, View.ALPHA, 1f).setDuration(800)
-        val tvRecipeSteps = ObjectAnimator.ofFloat(binding.tvDetailRecipeSteps, View.ALPHA, 1f).setDuration(800)
+        val btFavorite = ObjectAnimator.ofFloat(binding.btFavorite, View.ALPHA, 1f).setDuration(1000)
+        val ivRecipePicture = ObjectAnimator.ofFloat(binding.ivDetailRecipeImage, View.ALPHA, 1f).setDuration(1000)
+        val tvRecipeTitle = ObjectAnimator.ofFloat(binding.tvDetailRecipeTitle, View.ALPHA, 1f).setDuration(1000)
+        val tvRecipeAuthor = ObjectAnimator.ofFloat(binding.tvDetailRecipeAuthor, View.ALPHA, 1f).setDuration(1000)
+        val tvIngredients = ObjectAnimator.ofFloat(binding.tvIngredients, View.ALPHA, 1f).setDuration(1000)
+        val tvRecipeIngredients = ObjectAnimator.ofFloat(binding.tvDetailRecipeIngredients, View.ALPHA, 1f).setDuration(1000)
+        val tvSteps = ObjectAnimator.ofFloat(binding.tvSteps, View.ALPHA, 1f).setDuration(1000)
+        val tvRecipeSteps = ObjectAnimator.ofFloat(binding.tvDetailRecipeSteps, View.ALPHA, 1f).setDuration(1000)
 
 
         AnimatorSet().apply {
-            playSequentially(
+            playTogether(
+                btFavorite,
                 ivRecipePicture,
                 tvRecipeTitle,
                 tvRecipeAuthor,
+                tvIngredients,
                 tvRecipeIngredients,
+                tvSteps,
                 tvRecipeSteps
             )
             start()
