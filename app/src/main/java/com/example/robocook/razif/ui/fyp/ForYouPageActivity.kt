@@ -54,7 +54,7 @@ class ForYouPageActivity : AppCompatActivity() {
 
         setupView()
         setupViewModel()
-
+        hasLogin()
     }
 
     private fun setupView() {

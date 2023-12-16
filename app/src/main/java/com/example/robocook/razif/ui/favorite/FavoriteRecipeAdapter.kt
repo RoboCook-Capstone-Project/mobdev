@@ -37,51 +37,54 @@ class FavoriteRecipeAdapter : RecyclerView.Adapter<FavoriteRecipeAdapter.ViewHol
         private var isDetailsVisible = false
 
         init {
-            // Set up click listener for the button to toggle details visibility
             binding.btShowDetail.setOnClickListener {
                 isDetailsVisible = !isDetailsVisible
-                updateDetailsVisibility()
-                updateArrowIcon()
+                showHideDetail()
+                changeButtonImage()
             }
         }
 
         fun bind(data: RecipeList) {
+
             Glide.with(itemView.context).load(data.image_url).into(binding.ivRecipePicture)
             binding.tvRecipeTitle.text = data.title
             var recipeAuthor = data.author
             binding.tvRecipeAuthor.text = "by $recipeAuthor"
-            binding.tvRecipeIngredients.text = formatNumberedText(data.ingredients)
-            binding.tvRecipeSteps.text = formatNumberedText(data.steps)
-
-            // Initially hide details
+            binding.tvRecipeIngredients.text = giveNumbering(data.ingredients)
+            binding.tvRecipeSteps.text = giveNumbering(data.steps)
             binding.tvIngredients.visibility = View.GONE
             binding.tvRecipeIngredients.visibility = View.GONE
             binding.tvSteps.visibility = View.GONE
             binding.tvRecipeSteps.visibility = View.GONE
+            showHideDetail()
+            changeButtonImage()
 
-            updateDetailsVisibility()
-            updateArrowIcon()
         }
 
-        private fun updateDetailsVisibility() {
-            val visibility = if (isDetailsVisible) View.VISIBLE else View.GONE
+        private fun showHideDetail() {
 
+            val visibility = if (isDetailsVisible) View.VISIBLE else View.GONE
             binding.tvIngredients.visibility = visibility
             binding.tvRecipeIngredients.visibility = visibility
             binding.tvSteps.visibility = visibility
             binding.tvRecipeSteps.visibility = visibility
+
         }
 
-        private fun updateArrowIcon() {
+        private fun changeButtonImage() {
+
             val arrowIconRes = if (isDetailsVisible) R.drawable.ic_less else R.drawable.ic_more
             binding.btShowDetail.setImageResource(arrowIconRes)
+
         }
 
-        private fun formatNumberedText(text: String): String {
+        private fun giveNumbering(text: String): String {
+
             val lines = text.split("\n")
             val nonEmptyLines = lines.filter { it.isNotEmpty() }
             val numberedLines = nonEmptyLines.mapIndexed { index, line -> "${index + 1}. $line" }
             return numberedLines.joinToString("\n")
+
         }
 
     }

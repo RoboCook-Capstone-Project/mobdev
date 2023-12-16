@@ -17,7 +17,6 @@ class ForYouPageViewModel(private val userData: UserData, private val recipeRepo
     private val _isLoadingMain = MutableLiveData<Boolean>()
     val isLoadingMain: LiveData<Boolean> = _isLoadingMain
 
-
     fun fetchToken(): LiveData<String> {
 
         return userData.fetchUserToken().asLiveData()

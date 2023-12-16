@@ -60,11 +60,11 @@ class DetailActivity : AppCompatActivity() {
 
         val intentIngredients = intent.getStringExtra("ingredients")
         val tvIngredients: TextView = binding.tvDetailRecipeIngredients
-        tvIngredients.text = formatNumberedText(intentIngredients)
+        tvIngredients.text = giveNumbering(intentIngredients)
 
         val intentSteps = intent.getStringExtra("steps")
         val tvSteps: TextView = binding.tvDetailRecipeSteps
-        tvSteps.text = formatNumberedText(intentSteps)
+        tvSteps.text = giveNumbering(intentSteps)
 
         detailViewModel = ViewModelProvider(
             this,
@@ -79,13 +79,14 @@ class DetailActivity : AppCompatActivity() {
 
     }
 
-    private fun formatNumberedText(text: String?): String {
-        if (text.isNullOrBlank()) return ""
+    private fun giveNumbering(text: String?): String {
 
+        if (text.isNullOrBlank()) return ""
         val lines = text.split("\n")
         val nonEmptyLines = lines.filter { it.isNotEmpty() }
         val numberedLines = nonEmptyLines.mapIndexed { index, line -> "${index + 1}. $line" }
         return numberedLines.joinToString("\n")
+
     }
 
     private fun playAnimation() {
