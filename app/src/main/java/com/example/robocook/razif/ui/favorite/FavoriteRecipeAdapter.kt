@@ -2,10 +2,12 @@ package com.example.robocook.razif.ui.favorite
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.robocook.databinding.ItemRecipeBinding
+import com.example.robocook.R
+import com.example.robocook.databinding.ItemFavoriteRecipeBinding
 import com.example.robocook.razif.data.response.RecipeList
 
 class FavoriteRecipeAdapter : RecyclerView.Adapter<FavoriteRecipeAdapter.ViewHolder>() {
@@ -19,7 +21,7 @@ class FavoriteRecipeAdapter : RecyclerView.Adapter<FavoriteRecipeAdapter.ViewHol
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemRecipeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemFavoriteRecipeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -30,14 +32,57 @@ class FavoriteRecipeAdapter : RecyclerView.Adapter<FavoriteRecipeAdapter.ViewHol
 
     override fun getItemCount(): Int = recipeList.size
 
-    inner class ViewHolder(private val binding: ItemRecipeBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemFavoriteRecipeBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        private var isDetailsVisible = false
+
+        init {
+            // Set up click listener for the button to toggle details visibility
+            binding.btShowDetail.setOnClickListener {
+                isDetailsVisible = !isDetailsVisible
+                updateDetailsVisibility()
+                updateArrowIcon()
+            }
+        }
 
         fun bind(data: RecipeList) {
-
             Glide.with(itemView.context).load(data.image_url).into(binding.ivRecipePicture)
             binding.tvRecipeTitle.text = data.title
             var recipeAuthor = data.author
             binding.tvRecipeAuthor.text = "by $recipeAuthor"
+            binding.tvRecipeIngredients.text = formatNumberedText(data.ingredients)
+            binding.tvRecipeSteps.text = formatNumberedText(data.steps)
+
+            // Initially hide details
+            binding.tvIngredients.visibility = View.GONE
+            binding.tvRecipeIngredients.visibility = View.GONE
+            binding.tvSteps.visibility = View.GONE
+            binding.tvRecipeSteps.visibility = View.GONE
+
+            updateDetailsVisibility()
+            updateArrowIcon()
         }
+
+        private fun updateDetailsVisibility() {
+            val visibility = if (isDetailsVisible) View.VISIBLE else View.GONE
+
+            binding.tvIngredients.visibility = visibility
+            binding.tvRecipeIngredients.visibility = visibility
+            binding.tvSteps.visibility = visibility
+            binding.tvRecipeSteps.visibility = visibility
+        }
+
+        private fun updateArrowIcon() {
+            val arrowIconRes = if (isDetailsVisible) R.drawable.ic_less else R.drawable.ic_more
+            binding.btShowDetail.setImageResource(arrowIconRes)
+        }
+
+        private fun formatNumberedText(text: String): String {
+            val lines = text.split("\n")
+            val nonEmptyLines = lines.filter { it.isNotEmpty() }
+            val numberedLines = nonEmptyLines.mapIndexed { index, line -> "${index + 1}. $line" }
+            return numberedLines.joinToString("\n")
+        }
+
     }
 }
