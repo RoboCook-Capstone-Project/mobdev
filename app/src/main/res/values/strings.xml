@@ -14,5 +14,18 @@
     <string name="button_add_recipe">Button add Recipe</string>
     <string name="button_favorite">Button Favorite</string>
     <string name="button_fusion">Button Fusion</string>
+    <string name="create_your_recipe">Create your recipe!</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="title">Title</string>
+    <string name="create_title">Create title</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="enter_the_ingredients">Enter the ingredients</string>
+    <string name="steps">Steps</string>
+    <string name="explain_the_steps">Explain the steps</string>
+    <string name="photo">Photo</string>
+    <string name="photo_recipe">Photo Recipe</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="create_recipe">Create recipe</string>
 
 </resources>
