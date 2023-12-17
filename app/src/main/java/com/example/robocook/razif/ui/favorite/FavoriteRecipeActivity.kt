@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.robocook.R
 import com.example.robocook.razif.data.user.UserData
+import com.example.robocook.razif.ui.fusion.FusionActivity
 import com.example.robocook.razif.ui.helper.ViewModelFactory
 import com.example.robocook.razif.ui.welcome.WelcomeActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "userdata")
 
@@ -51,6 +53,13 @@ class FavoriteRecipeActivity : AppCompatActivity() {
 
         favoriteRecipeViewModel.recipeList.observe(this) { recipes ->
             recipeAdapter.setRecipes(recipes)
+        }
+
+        // fab ke halaman fussion
+        val fabFusion: FloatingActionButton = findViewById(R.id.fab_fusion)
+        fabFusion.setOnClickListener {
+            val intent = Intent(this@FavoriteRecipeActivity, FusionActivity::class.java)
+            startActivity(intent)
         }
     }
 }

@@ -73,10 +73,12 @@ class DetailActivity : AppCompatActivity() {
 
         playAnimation()
 
-        binding.btFavorite.setOnClickListener {
-            addToFavorites()
-        }
+//        binding.btFavorite.setOnClickListener {
+//            addToFavorites()
+//        }
 
+        // fab ke halaman favorite
+        binding.fabFavorite.setOnClickListener { addToFavorites() }
     }
 
     private fun giveNumbering(text: String?): String {
@@ -91,7 +93,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun playAnimation() {
 
-        val btFavorite = ObjectAnimator.ofFloat(binding.btFavorite, View.ALPHA, 1f).setDuration(1000)
+//        val btFavorite = ObjectAnimator.ofFloat(binding.btFavorite, View.ALPHA, 1f).setDuration(1000)
         val ivRecipePicture = ObjectAnimator.ofFloat(binding.ivDetailRecipeImage, View.ALPHA, 1f).setDuration(1000)
         val tvRecipeTitle = ObjectAnimator.ofFloat(binding.tvDetailRecipeTitle, View.ALPHA, 1f).setDuration(1000)
         val tvRecipeAuthor = ObjectAnimator.ofFloat(binding.tvDetailRecipeAuthor, View.ALPHA, 1f).setDuration(1000)
@@ -103,7 +105,7 @@ class DetailActivity : AppCompatActivity() {
 
         AnimatorSet().apply {
             playTogether(
-                btFavorite,
+//                btFavorite,
                 ivRecipePicture,
                 tvRecipeTitle,
                 tvRecipeAuthor,

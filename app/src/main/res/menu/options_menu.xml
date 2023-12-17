@@ -4,29 +4,29 @@
 
     <group android:menuCategory="container">
 
-        <item
-            android:id="@+id/optFusion"
-            android:icon="@drawable/ic_fusion"
-            android:title="Add"
-            app:showAsAction="collapseActionView|always" />
+<!--        <item-->
+<!--            android:id="@+id/optFusion"-->
+<!--            android:icon="@drawable/ic_fusion"-->
+<!--            android:title="Add"-->
+<!--            app:showAsAction="collapseActionView|always" />-->
 
         <item
             android:id="@+id/optToasty"
             android:icon="@drawable/ic_toasty"
-            android:title="Add"
+            android:title="Toasty"
             app:showAsAction="collapseActionView|always" />
 
         <item
             android:id="@+id/optSearch"
             android:icon="@drawable/ic_search"
-            android:title="Add"
+            android:title="Search"
             app:showAsAction="collapseActionView|always" />
 
-        <item
-            android:id="@+id/optAdd"
-            android:icon="@drawable/ic_add"
-            android:title="Add"
-            app:showAsAction="collapseActionView|always" />
+<!--        <item-->
+<!--            android:id="@+id/optAdd"-->
+<!--            android:icon="@drawable/ic_add"-->
+<!--            android:title="Add"-->
+<!--            app:showAsAction="collapseActionView|always" />-->
 
         <item
             android:id="@+id/optFavorite"

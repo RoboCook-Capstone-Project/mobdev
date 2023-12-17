@@ -22,8 +22,11 @@ import com.example.robocook.MainActivity
 import com.example.robocook.R
 import com.example.robocook.databinding.ActivityForYouPageBinding
 import com.example.robocook.razif.data.user.UserData
+import com.example.robocook.razif.ui.add_recipe.AddRecipeActivity
 import com.example.robocook.razif.ui.favorite.FavoriteRecipeActivity
 import com.example.robocook.razif.ui.helper.ViewModelFactory
+import com.example.robocook.razif.ui.search.SearchActivity
+import com.example.robocook.razif.ui.toasty.ToastActivity
 import com.example.robocook.razif.ui.welcome.WelcomeActivity
 
 
@@ -51,6 +54,12 @@ class ForYouPageActivity : AppCompatActivity() {
             override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
             }
         })
+
+        // fab ke halaman add recipe
+        binding.fabAddRecipe.setOnClickListener {
+            val intent = Intent(this@ForYouPageActivity, AddRecipeActivity::class.java)
+            startActivity(intent)
+        }
 
         setupView()
         setupViewModel()
@@ -113,10 +122,10 @@ class ForYouPageActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.optFusion -> startActivity(Intent(this, MainActivity::class.java))
-            R.id.optToasty -> startActivity(Intent(this, MainActivity::class.java))
-            R.id.optSearch -> startActivity(Intent(this, MainActivity::class.java))
-            R.id.optAdd -> startActivity(Intent(this, MainActivity::class.java))
+//            R.id.optFusion -> startActivity(Intent(this, MainActivity::class.java))
+            R.id.optToasty -> startActivity(Intent(this, ToastActivity::class.java))
+            R.id.optSearch -> startActivity(Intent(this, SearchActivity::class.java))
+//            R.id.optAdd -> startActivity(Intent(this, MainActivity::class.java))
             R.id.optFavorite -> startActivity(Intent(this, FavoriteRecipeActivity::class.java))
             R.id.optLogout -> forYouPageViewModel.userLogout()
         }

@@ -11,5 +11,8 @@
     <string name="recipe_title">Title of The Recipe</string>
     <string name="recipe_ingredients">Ingredients of The Recipe</string>
     <string name="recipe_steps">Steps of The Recipe</string>
+    <string name="button_add_recipe">Button add Recipe</string>
+    <string name="button_favorite">Button Favorite</string>
+    <string name="button_fusion">Button Fusion</string>
 
 </resources>
