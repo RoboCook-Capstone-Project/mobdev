@@ -18,7 +18,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.robocook.MainActivity
 import com.example.robocook.R
 import com.example.robocook.databinding.ActivityForYouPageBinding
 import com.example.robocook.razif.data.user.UserData
@@ -26,7 +25,7 @@ import com.example.robocook.razif.ui.add_recipe.AddRecipeActivity
 import com.example.robocook.razif.ui.favorite.FavoriteRecipeActivity
 import com.example.robocook.razif.ui.helper.ViewModelFactory
 import com.example.robocook.razif.ui.search.SearchActivity
-import com.example.robocook.razif.ui.toasty.ToastActivity
+import com.example.robocook.razif.ui.toasty.ToastyActivity
 import com.example.robocook.razif.ui.welcome.WelcomeActivity
 
 
@@ -123,7 +122,7 @@ class ForYouPageActivity : AppCompatActivity() {
 
         when (item.itemId) {
 //            R.id.optFusion -> startActivity(Intent(this, MainActivity::class.java))
-            R.id.optToasty -> startActivity(Intent(this, ToastActivity::class.java))
+            R.id.optToasty -> startActivity(Intent(this, ToastyActivity::class.java))
             R.id.optSearch -> startActivity(Intent(this, SearchActivity::class.java))
 //            R.id.optAdd -> startActivity(Intent(this, MainActivity::class.java))
             R.id.optFavorite -> startActivity(Intent(this, FavoriteRecipeActivity::class.java))

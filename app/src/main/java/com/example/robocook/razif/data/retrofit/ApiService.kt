@@ -4,6 +4,7 @@ import com.example.robocook.razif.data.response.ForYouPageResponse
 import com.example.robocook.razif.data.response.LoginResponse
 import com.example.robocook.razif.data.response.AddToFavoriteResponse
 import com.example.robocook.razif.data.response.GetUserFavoriteResponse
+import com.example.robocook.razif.data.response.ToastyResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -48,4 +49,8 @@ interface ApiService {
         @Header("Authorization") token: String,
     ): GetUserFavoriteResponse
 
+    @GET("api/recipes/toasty")
+    suspend fun feelingToasty(
+        @Header("Authorization") token: String
+    ): ToastyResponse
 }
