@@ -2,12 +2,14 @@ package com.example.robocook.razif.ui.detail
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.View.VISIBLE
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -37,6 +39,7 @@ class DetailActivity : AppCompatActivity() {
     private var recipeId by Delegates.notNull<Int>()
     private lateinit var detailViewModel: DetailViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -47,25 +50,25 @@ class DetailActivity : AppCompatActivity() {
         recipeId = intentId
 
         val intentPicture = intent.getStringExtra("image")
-        val ivPicture: ImageView = binding.ivDetailRecipeImage
+        val ivPicture: ImageView = binding.imageDetailRecipe
         Glide.with(this)
             .load(intentPicture)
             .into(ivPicture)
 
         val intentTitle = intent.getStringExtra("title")
-        val tvTitle: TextView = binding.tvDetailRecipeTitle
+        val tvTitle: TextView = binding.tvTitle
         tvTitle.text = intentTitle
 
         val intentAuthor = intent.getStringExtra("author")
-        val tvAuthor: TextView = binding.tvDetailRecipeAuthor
-        tvAuthor.text = intentAuthor
+        val tvAuthor: TextView = binding.tvAuthor
+        tvAuthor.text = getString(R.string.author_format, intentAuthor)
 
         val intentIngredients = intent.getStringExtra("ingredients")
-        val tvIngredients: TextView = binding.tvDetailRecipeIngredients
+        val tvIngredients: TextView = binding.tvIngredientsFill
         tvIngredients.text = giveNumbering(intentIngredients)
 
         val intentSteps = intent.getStringExtra("steps")
-        val tvSteps: TextView = binding.tvDetailRecipeSteps
+        val tvSteps: TextView = binding.tvStepsFill
         tvSteps.text = giveNumbering(intentSteps)
 
         detailViewModel = ViewModelProvider(
@@ -81,6 +84,7 @@ class DetailActivity : AppCompatActivity() {
 
         // fab ke halaman favorite
         binding.fabFavorite.setOnClickListener { addToFavorites() }
+
     }
 
     private fun giveNumbering(text: String?): String {
@@ -96,13 +100,13 @@ class DetailActivity : AppCompatActivity() {
     private fun playAnimation() {
 
 //        val btFavorite = ObjectAnimator.ofFloat(binding.btFavorite, View.ALPHA, 1f).setDuration(1000)
-        val ivRecipePicture = ObjectAnimator.ofFloat(binding.ivDetailRecipeImage, View.ALPHA, 1f).setDuration(1000)
-        val tvRecipeTitle = ObjectAnimator.ofFloat(binding.tvDetailRecipeTitle, View.ALPHA, 1f).setDuration(1000)
-        val tvRecipeAuthor = ObjectAnimator.ofFloat(binding.tvDetailRecipeAuthor, View.ALPHA, 1f).setDuration(1000)
+        val ivRecipePicture = ObjectAnimator.ofFloat(binding.imageDetailRecipe, View.ALPHA, 1f).setDuration(1000)
+        val tvRecipeTitle = ObjectAnimator.ofFloat(binding.tvTitle, View.ALPHA, 1f).setDuration(1000)
+        val tvRecipeAuthor = ObjectAnimator.ofFloat(binding.tvAuthor, View.ALPHA, 1f).setDuration(1000)
         val tvIngredients = ObjectAnimator.ofFloat(binding.tvIngredients, View.ALPHA, 1f).setDuration(1000)
-        val tvRecipeIngredients = ObjectAnimator.ofFloat(binding.tvDetailRecipeIngredients, View.ALPHA, 1f).setDuration(1000)
+        val tvRecipeIngredients = ObjectAnimator.ofFloat(binding.tvIngredientsFill, View.ALPHA, 1f).setDuration(1000)
         val tvSteps = ObjectAnimator.ofFloat(binding.tvSteps, View.ALPHA, 1f).setDuration(1000)
-        val tvRecipeSteps = ObjectAnimator.ofFloat(binding.tvDetailRecipeSteps, View.ALPHA, 1f).setDuration(1000)
+        val tvRecipeSteps = ObjectAnimator.ofFloat(binding.tvStepsFill, View.ALPHA, 1f).setDuration(1000)
 
 
         AnimatorSet().apply {

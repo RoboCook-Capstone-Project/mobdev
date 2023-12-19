@@ -27,8 +27,8 @@
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
     <string name="create_recipe">Create recipe</string>
-    <string name="title_preview">Ayam Bakar Pedas Manis</string>
-    <string name="author">Author : %d</string>
+    <string name="author">Author</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</string>
+    <string name="author_format">Author : %1$s</string>
 
 </resources>

@@ -5,8 +5,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.viewModels
+import android.widget.TextView
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -55,10 +54,19 @@ class ToastyActivity : AppCompatActivity() {
                     .load(toasty.photoUrl)
                     .into(imageToasty)
                 tvTitle.text = toasty.title
-                tvAuthor.text = resources.getString(R.string.author, toasty.author)
-                tvIngredientsFill.text = toasty.ingredients
-                tvStepsFill.text = toasty.steps
+                tvAuthor.text = getString(R.string.author_format, toasty.author)
+                tvIngredientsFill.text = giveNumbering(toasty.ingredients)
+                tvStepsFill.text = giveNumbering(toasty.steps)
             }
         }
+    }
+
+    private fun giveNumbering(text: String): String {
+
+        val lines = text.split("\n")
+        val nonEmptyLines = lines.filter { it.isNotEmpty() }
+        val numberedLines = nonEmptyLines.mapIndexed { index, line -> "${index + 1}. $line" }
+        return numberedLines.joinToString("\n")
+
     }
 }
