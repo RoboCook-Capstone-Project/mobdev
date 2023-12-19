@@ -1,12 +1,12 @@
 # Robocook.
 
-## Task yang sudah selesai di-branch ini:
+## Task Razif:
 - Welcome page
 - Registration page
 - Login page (and logout feature)
 - For you page
-- Detail recipe page (and add to favorite feature)
-- List of favorite page
+- Detail recipe page
+- Favorite recipe page and add to favorite feature
 
 ## Task Ophi
 - Add Recipe
