@@ -33,8 +33,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
                 app:shapeAppearanceOverlay="@style/ImageView.Corner"
-                android:paddingHorizontal="20dp"
-                android:paddingBottom="10dp"
                 app:srcCompat="@drawable/image_food" />
 
             <TextView
