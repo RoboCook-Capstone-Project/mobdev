@@ -5,6 +5,7 @@ import com.example.robocook.razif.data.response.ForYouPageResponse
 import com.example.robocook.razif.data.response.LoginResponse
 import com.example.robocook.razif.data.response.AddToFavoriteResponse
 import com.example.robocook.razif.data.response.GetUserFavoriteResponse
+import com.example.robocook.razif.data.response.SearchResponse
 import com.example.robocook.razif.data.response.ToastyResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -68,5 +69,13 @@ interface ApiService {
         @Part("ingredients") ingredients: RequestBody,
         @Part("steps") steps: RequestBody,
     ): Call<AddRecipeResponse>
+
+    @GET("api/recipes/search")
+    fun searchRecipe(
+        @Header("Authorization") token: String,
+        @Query("keyword") keyword: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int
+    ): Call<SearchResponse>
 
 }

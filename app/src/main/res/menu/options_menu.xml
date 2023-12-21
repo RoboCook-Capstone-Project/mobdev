@@ -17,7 +17,7 @@
             app:showAsAction="collapseActionView|always" />
 
         <item
-            android:id="@+id/optSearch"
+            android:id="@+id/optSearchFeature"
             android:icon="@drawable/ic_search"
             android:title="Search"
             app:showAsAction="collapseActionView|always" />

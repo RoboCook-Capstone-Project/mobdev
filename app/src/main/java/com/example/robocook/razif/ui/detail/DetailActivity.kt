@@ -46,6 +46,8 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Recipe's Detail"
+
         val intentId = intent.getIntExtra("id", -1)
         recipeId = intentId
 
@@ -61,7 +63,7 @@ class DetailActivity : AppCompatActivity() {
 
         val intentAuthor = intent.getStringExtra("author")
         val tvAuthor: TextView = binding.tvAuthor
-        tvAuthor.text = getString(R.string.author_format, intentAuthor)
+        tvAuthor.text = "By $intentAuthor"
 
         val intentIngredients = intent.getStringExtra("ingredients")
         val tvIngredients: TextView = binding.tvIngredientsFill

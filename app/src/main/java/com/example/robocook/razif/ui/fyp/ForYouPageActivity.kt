@@ -123,7 +123,11 @@ class ForYouPageActivity : AppCompatActivity() {
         when (item.itemId) {
 //            R.id.optFusion -> startActivity(Intent(this, MainActivity::class.java))
             R.id.optToasty -> startActivity(Intent(this, ToastyActivity::class.java))
-            R.id.optSearch -> startActivity(Intent(this, SearchActivity::class.java))
+            R.id.optSearchFeature -> {
+                val intent = Intent(this, SearchActivity::class.java)
+                startActivity(intent)
+                return true
+            }
 //            R.id.optAdd -> startActivity(Intent(this, MainActivity::class.java))
             R.id.optFavorite -> startActivity(Intent(this, FavoriteRecipeActivity::class.java))
             R.id.optLogout -> forYouPageViewModel.userLogout()

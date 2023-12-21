@@ -55,6 +55,7 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("androidx.paging:paging-runtime:3.2.1")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 
     // Datastore
     implementation("androidx.datastore:datastore-preferences:1.0.0")

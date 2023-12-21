@@ -49,7 +49,7 @@ class FavoriteRecipeAdapter : RecyclerView.Adapter<FavoriteRecipeAdapter.ViewHol
             Glide.with(itemView.context).load(data.image_url).into(binding.ivRecipePicture)
             binding.tvRecipeTitle.text = data.title
             val recipeAuthor = data.author
-            binding.tvRecipeAuthor.text = "Author : $recipeAuthor"
+            binding.tvRecipeAuthor.text = "by $recipeAuthor"
             binding.tvRecipeIngredients.text = giveNumbering(data.ingredients)
             binding.tvRecipeSteps.text = giveNumbering(data.steps)
             binding.tvIngredients.visibility = View.GONE
