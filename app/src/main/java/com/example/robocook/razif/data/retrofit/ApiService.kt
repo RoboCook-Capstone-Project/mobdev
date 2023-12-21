@@ -4,6 +4,7 @@ import com.example.robocook.razif.data.response.AddRecipeResponse
 import com.example.robocook.razif.data.response.ForYouPageResponse
 import com.example.robocook.razif.data.response.LoginResponse
 import com.example.robocook.razif.data.response.AddToFavoriteResponse
+import com.example.robocook.razif.data.response.FusionResponse
 import com.example.robocook.razif.data.response.GetUserFavoriteResponse
 import com.example.robocook.razif.data.response.SearchResponse
 import com.example.robocook.razif.data.response.ToastyResponse
@@ -77,5 +78,12 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("size") size: Int
     ): Call<SearchResponse>
+
+    @GET("api/recipes/fusion")
+    suspend fun fetchFusionResult(
+        @Header("Authorization") token: String,
+        @Query("first_recipe_id") first__recipe_id: Int,
+        @Query("second_recipe_id") second_recipe_id: Int,
+    ): FusionResponse
 
 }

@@ -8,6 +8,8 @@ import com.example.robocook.razif.data.user.UserData
 import com.example.robocook.razif.ui.add_recipe.AddRecipeViewModel
 import com.example.robocook.razif.ui.detail.DetailViewModel
 import com.example.robocook.razif.ui.favorite.FavoriteRecipeViewModel
+import com.example.robocook.razif.ui.fusion.FusionResultViewModel
+import com.example.robocook.razif.ui.fusion.FusionViewModel
 import com.example.robocook.razif.ui.fyp.ForYouPageViewModel
 import com.example.robocook.razif.ui.login.LoginViewModel
 import com.example.robocook.razif.ui.register.RegisterViewModel
@@ -52,6 +54,14 @@ class ViewModelFactory(private val userData: UserData, private val context : Con
 
             modelClass.isAssignableFrom(SearchViewModel::class.java) -> {
                 SearchViewModel(userData) as T
+            }
+
+            modelClass.isAssignableFrom(FusionViewModel::class.java) -> {
+                FusionViewModel(userData) as T
+            }
+
+            modelClass.isAssignableFrom(FusionResultViewModel::class.java) -> {
+                FusionResultViewModel(userData) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
