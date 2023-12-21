@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.robocook.razif.data.database.helper.Injection
 import com.example.robocook.razif.data.user.UserData
+import com.example.robocook.razif.ui.add_recipe.AddRecipeViewModel
 import com.example.robocook.razif.ui.detail.DetailViewModel
 import com.example.robocook.razif.ui.favorite.FavoriteRecipeViewModel
 import com.example.robocook.razif.ui.fyp.ForYouPageViewModel
@@ -42,6 +43,10 @@ class ViewModelFactory(private val userData: UserData, private val context : Con
 
             modelClass.isAssignableFrom(ToastyViewModel::class.java) -> {
                 ToastyViewModel(userData) as T
+            }
+
+            modelClass.isAssignableFrom(AddRecipeViewModel::class.java) -> {
+                AddRecipeViewModel(userData) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

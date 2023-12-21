@@ -1,16 +1,21 @@
 package com.example.robocook.razif.data.retrofit
 
+import com.example.robocook.razif.data.response.AddRecipeResponse
 import com.example.robocook.razif.data.response.ForYouPageResponse
 import com.example.robocook.razif.data.response.LoginResponse
 import com.example.robocook.razif.data.response.AddToFavoriteResponse
 import com.example.robocook.razif.data.response.GetUserFavoriteResponse
 import com.example.robocook.razif.data.response.ToastyResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Query
 
 interface ApiService {
@@ -53,4 +58,15 @@ interface ApiService {
     suspend fun feelingToasty(
         @Header("Authorization") token: String
     ): ToastyResponse
+
+    @Multipart
+    @POST("api/recipes")
+    fun addNewRecipe(
+        @Header("Authorization") token: String,
+        @Part("title") title: RequestBody,
+        @Part file : MultipartBody.Part,
+        @Part("ingredients") ingredients: RequestBody,
+        @Part("steps") steps: RequestBody,
+    ): Call<AddRecipeResponse>
+
 }
