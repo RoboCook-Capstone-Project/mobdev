@@ -30,5 +30,11 @@
     <string name="author">Author</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</string>
     <string name="author_format">Author : %1$s</string>
-
+    <string name="robocook">ROBOCOOK!</string>
+    <string name="onboarding_desc_1">Providing you with recipe recommendations that are affordable and easy to make.</string>
+    <string name="fusion">Fusion!</string>
+    <string name="onboarding_desc_2">Combine two of your favorite foods and get recipe recommendations to help you get more variety in your home cooking.</string>
+    <string name="get_started">Get Started!</string>
+    <string name="icon_next">Icon Next</string>
+    <string name="icon_prev">Icon Prev</string>
 </resources>
