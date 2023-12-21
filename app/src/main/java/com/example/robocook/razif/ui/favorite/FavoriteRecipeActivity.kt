@@ -63,5 +63,7 @@ class FavoriteRecipeActivity : AppCompatActivity() {
             val intent = Intent(this@FavoriteRecipeActivity, FusionActivity::class.java)
             startActivity(intent)
         }
+
+        supportActionBar?.hide()
     }
 }

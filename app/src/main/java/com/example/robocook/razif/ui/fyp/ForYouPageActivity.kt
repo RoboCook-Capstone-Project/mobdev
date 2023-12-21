@@ -3,6 +3,8 @@ package com.example.robocook.razif.ui.fyp
 import android.content.Context
 import android.content.Intent
 import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
@@ -54,11 +56,12 @@ class ForYouPageActivity : AppCompatActivity() {
             }
         })
 
-        // fab ke halaman add recipe
         binding.fabAddRecipe.setOnClickListener {
             val intent = Intent(this@ForYouPageActivity, AddRecipeActivity::class.java)
             startActivity(intent)
         }
+
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
 
         setupView()
         setupViewModel()
@@ -119,28 +122,29 @@ class ForYouPageActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when (item.itemId) {
-//            R.id.optFusion -> startActivity(Intent(this, MainActivity::class.java))
-            R.id.optToasty -> startActivity(Intent(this, ToastyActivity::class.java))
+            R.id.optToasty -> {
+                startActivity(Intent(this, ToastyActivity::class.java))
+            }
+
             R.id.optSearchFeature -> {
                 val intent = Intent(this, SearchActivity::class.java)
                 startActivity(intent)
                 return true
             }
-//            R.id.optAdd -> startActivity(Intent(this, MainActivity::class.java))
-            R.id.optFavorite -> startActivity(Intent(this, FavoriteRecipeActivity::class.java))
+
+            R.id.optFavorite -> {
+                startActivity(Intent(this, FavoriteRecipeActivity::class.java))
+            }
+
             R.id.optLogout -> forYouPageViewModel.userLogout()
         }
 
         return super.onOptionsItemSelected(item)
-
     }
 
     private fun hasLogin() {
-
         forYouPageViewModel.fetchToken().observe(this) {
-
             if (it == "null") {
 
                 val intent = Intent(this, WelcomeActivity::class.java)
@@ -154,24 +158,18 @@ class ForYouPageActivity : AppCompatActivity() {
                 setupSwipeRefresh()
 
             }
-
         }
 
         forYouPageViewModel.isLoadingMain.observe(this) { showLoadingMain(it) }
-
     }
 
     override fun onResume() {
-
         super.onResume()
         hasLogin()
-
     }
 
     private fun showLoadingMain(isLoadingMain: Boolean) {
-
         binding.pb.visibility = if (isLoadingMain) View.VISIBLE else View.GONE
-
     }
 
 }

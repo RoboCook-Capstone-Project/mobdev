@@ -61,5 +61,6 @@ class FusionResultActivity : AppCompatActivity() {
             fusionRecipeAdapter.setRecipes(recipes)
         }
 
+        supportActionBar?.hide()
     }
 }

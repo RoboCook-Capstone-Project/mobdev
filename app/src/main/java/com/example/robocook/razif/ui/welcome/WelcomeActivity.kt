@@ -22,6 +22,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         setupView()
         setupAction()
+        supportActionBar?.hide()
     }
 
 
@@ -36,8 +37,6 @@ class WelcomeActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-
-        supportActionBar?.hide()
     }
 
     private fun setupAction() {

@@ -101,5 +101,7 @@ class FusionActivity : AppCompatActivity() {
             }
         }
 
+        supportActionBar?.hide()
+
     }
 }

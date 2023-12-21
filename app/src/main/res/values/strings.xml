@@ -48,4 +48,9 @@
     <string name="create_email">Create email</string>
     <string name="create_password">Create password</string>
     <string name="already_have">Already have an account?</string>
+    <string name="image_recipe">Image Recipe</string>
+    <string name="image_favorite">Image Favorite</string>
+    <string name="combine_two_recipes">Combine two recipes to get new recommendations!</string>
+    <string name="favorite">Favorite</string>
+    <string name="fusion_result">Fusion Result</string>
 </resources>

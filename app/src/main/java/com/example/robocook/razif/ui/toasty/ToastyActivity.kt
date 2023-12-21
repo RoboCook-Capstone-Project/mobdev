@@ -3,6 +3,8 @@ package com.example.robocook.razif.ui.toasty
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -59,6 +61,7 @@ class ToastyActivity : AppCompatActivity() {
                 tvStepsFill.text = giveNumbering(toasty.steps)
             }
         }
+        supportActionBar?.hide()
     }
 
     private fun giveNumbering(text: String): String {

@@ -38,6 +38,8 @@ class LoginActivity : AppCompatActivity() {
         setupView()
         setupViewModel()
         setupAction()
+
+        supportActionBar?.hide()
     }
 
     private fun setupView() {
@@ -51,8 +53,6 @@ class LoginActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-
-        supportActionBar?.hide()
     }
 
     private fun setupViewModel() {

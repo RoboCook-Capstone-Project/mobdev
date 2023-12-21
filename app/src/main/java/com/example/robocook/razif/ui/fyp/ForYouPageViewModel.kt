@@ -18,23 +18,17 @@ class ForYouPageViewModel(private val userData: UserData, private val recipeRepo
     val isLoadingMain: LiveData<Boolean> = _isLoadingMain
 
     fun fetchToken(): LiveData<String> {
-
         return userData.fetchUserToken().asLiveData()
-
     }
 
     fun userLogout() {
-
         viewModelScope.launch {
             userData.userLogout()
         }
-
     }
 
     fun fetchRecipePaging(token: String): LiveData<PagingData<Recipe>> {
-
         return recipeRepository.fetchRecipe(token).cachedIn(viewModelScope)
-
     }
 
 }

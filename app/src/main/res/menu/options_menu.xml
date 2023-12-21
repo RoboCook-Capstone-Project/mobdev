@@ -4,12 +4,6 @@
 
     <group android:menuCategory="container">
 
-<!--        <item-->
-<!--            android:id="@+id/optFusion"-->
-<!--            android:icon="@drawable/ic_fusion"-->
-<!--            android:title="Add"-->
-<!--            app:showAsAction="collapseActionView|always" />-->
-
         <item
             android:id="@+id/optToasty"
             android:icon="@drawable/ic_toasty"

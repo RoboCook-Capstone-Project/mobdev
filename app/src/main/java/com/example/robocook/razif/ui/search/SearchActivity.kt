@@ -3,11 +3,14 @@ package com.example.robocook.razif.ui.search
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -76,6 +79,8 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
+        val actionBarColor = ContextCompat.getColor(this, R.color.orange)
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(actionBarColor))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -93,8 +98,6 @@ class SearchActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvRecipeSearch.layoutManager = layoutManager
-        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-        binding.rvRecipeSearch.addItemDecoration(itemDecoration)
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
         searchView.queryHint = "Search recipe here"
