@@ -37,4 +37,15 @@
     <string name="get_started">Get Started!</string>
     <string name="icon_next">Icon Next</string>
     <string name="icon_prev">Icon Prev</string>
+    <string name="logo_app">Logo App</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="login_now_to_continue">Login now to continue</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="don_t_have_an_account">Don’t have an account?</string>
+    <string name="create_an_account">Create an Account!</string>
+    <string name="fill_column_below">Please fill the column below</string>
+    <string name="create_email">Create email</string>
+    <string name="create_password">Create password</string>
+    <string name="already_have">Already have an account?</string>
 </resources>

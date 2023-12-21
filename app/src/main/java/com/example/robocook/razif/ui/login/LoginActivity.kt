@@ -1,7 +1,5 @@
 package com.example.robocook.razif.ui.login
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -20,6 +18,7 @@ import com.example.robocook.razif.data.response.LoginResponse
 import com.example.robocook.razif.data.user.UserData
 import com.example.robocook.razif.ui.fyp.ForYouPageActivity
 import com.example.robocook.razif.ui.helper.ViewModelFactory
+import com.example.robocook.razif.ui.register.RegisterActivity
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "userdata")
 
@@ -39,7 +38,6 @@ class LoginActivity : AppCompatActivity() {
         setupView()
         setupViewModel()
         setupAction()
-        playAnimation()
     }
 
     private fun setupView() {
@@ -55,7 +53,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         supportActionBar?.hide()
-
     }
 
     private fun setupViewModel() {
@@ -75,66 +72,29 @@ class LoginActivity : AppCompatActivity() {
             val tvPassword = binding.etPasswordLogin.text.toString()
 
             when {
-
                 tvEmail.isEmpty() -> { binding.loEtEmailLogin.error = "Input your email" }
                 tvPassword.isEmpty() -> { binding.loEtPasswordLogin.error = "Input your password" }
 
                 else -> {
-
                     loginViewModel.userLogin(tvEmail, tvPassword)
                     loginViewModel.loginResponse.observe(this) { loginRespond -> validationCheck(loginRespond) }
                     loginViewModel.isLoadingLogin.observe(this) { showLoadingLogin(it) }
-
                 }
-
             }
+        }
 
+        binding.btRegister.setOnClickListener{
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
-
-    private fun playAnimation() {
-
-        ObjectAnimator.ofFloat(binding.ivBannerLogin, View.TRANSLATION_X, -30f, 30f).apply {
-
-            repeatCount = ObjectAnimator.INFINITE
-            repeatMode = ObjectAnimator.REVERSE
-            duration = 2500
-
-        }.start()
-
-        val tvEmailElement = ObjectAnimator.ofFloat(binding.tvEmailLogin, View.ALPHA, 1f).setDuration(1000)
-        val tvEmail = ObjectAnimator.ofFloat(binding.loEtEmailLogin, View.ALPHA, 1f).setDuration(1000)
-        val tvPasswordElement = ObjectAnimator.ofFloat(binding.tvPasswordLogin, View.ALPHA, 1f).setDuration(400)
-        val tvPassword = ObjectAnimator.ofFloat(binding.loEtPasswordLogin, View.ALPHA, 1f).setDuration(400)
-        val btLogin = ObjectAnimator.ofFloat(binding.btLogin, View.ALPHA, 1f).setDuration(400)
-
-        val emailTogether = AnimatorSet().apply {
-            playTogether(tvEmailElement, tvEmail)
-        }
-
-        val passwordTogether = AnimatorSet().apply {
-            playTogether(tvPasswordElement, tvPassword)
-        }
-
-        AnimatorSet().apply {
-            playSequentially(
-                emailTogether,
-                passwordTogether,
-                btLogin
-            )
-            start()
-        }
-
-    }
-
 
     private fun validationCheck(loginResponse: LoginResponse?) {
 
-        var status = loginResponse?.error
+        val status = loginResponse?.error
         validation = status
 
         if (status == false) {
-
             AlertDialog.Builder(this).apply {
                 setTitle("Success!")
                 setMessage("Your login is successful.")
@@ -147,9 +107,7 @@ class LoginActivity : AppCompatActivity() {
                 create()
                 show()
             }
-
         } else {
-
             AlertDialog.Builder(this).apply {
                 setTitle("Failed!")
                 setMessage("Your login has failed.")
@@ -161,16 +119,11 @@ class LoginActivity : AppCompatActivity() {
                 create()
                 show()
             }
-
         }
-
     }
 
-
     private fun showLoadingLogin(isLoadingLogin: Boolean) {
-
         binding.pbLogin.visibility = if (isLoadingLogin) View.VISIBLE else View.GONE
-
     }
 
 }
