@@ -1,12 +1,12 @@
 # Robocook.
 
 ## Task Razif:
-- Welcome page
-- Registration page
-- Login page (and logout feature)
-- For you page
-- Detail recipe page
-- Favorite recipe page and add to favorite feature
+- Welcome
+- Registration
+- Login and Logout
+- For You Page
+- Detail Recipe
+- Favorite Recipe and Add to Favorite
 
 ## Task Ophi
 - Add Recipe
