@@ -12,12 +12,9 @@ import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.robocook.R
-import com.example.robocook.databinding.ActivityFusionBinding
 import com.example.robocook.razif.data.user.UserData
-import com.example.robocook.razif.ui.favorite.FavoriteRecipeViewModel
 import com.example.robocook.razif.ui.helper.ViewModelFactory
 import com.example.robocook.razif.ui.welcome.WelcomeActivity
 
@@ -100,8 +97,6 @@ class FusionActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
         supportActionBar?.hide()
-
     }
 }

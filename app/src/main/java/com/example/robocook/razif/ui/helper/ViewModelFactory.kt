@@ -14,6 +14,7 @@ import com.example.robocook.razif.ui.fyp.ForYouPageViewModel
 import com.example.robocook.razif.ui.login.LoginViewModel
 import com.example.robocook.razif.ui.register.RegisterViewModel
 import com.example.robocook.razif.ui.search.SearchViewModel
+import com.example.robocook.razif.ui.splash.SplashScreenViewModel
 import com.example.robocook.razif.ui.toasty.ToastyViewModel
 
 class ViewModelFactory(private val userData: UserData, private val context : Context) : ViewModelProvider.NewInstanceFactory() {
@@ -62,6 +63,10 @@ class ViewModelFactory(private val userData: UserData, private val context : Con
 
             modelClass.isAssignableFrom(FusionResultViewModel::class.java) -> {
                 FusionResultViewModel(userData) as T
+            }
+
+            modelClass.isAssignableFrom(SplashScreenViewModel::class.java) -> {
+                SplashScreenViewModel(userData) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
