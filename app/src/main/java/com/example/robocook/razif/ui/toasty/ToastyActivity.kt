@@ -51,7 +51,7 @@ class ToastyActivity : AppCompatActivity() {
         toastyViewModel.toasty.observe(this) { toasty ->
             binding.apply {
                 Glide.with(applicationContext)
-                    .load(toasty.photoUrl)
+                    .load(toasty.image_url)
                     .into(imageToasty)
                 tvTitle.text = toasty.title
                 tvAuthor.text = getString(R.string.author_format, toasty.author)
