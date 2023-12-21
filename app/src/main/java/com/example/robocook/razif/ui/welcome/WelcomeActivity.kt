@@ -1,12 +1,9 @@
 package com.example.robocook.razif.ui.welcome
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import com.example.robocook.databinding.ActivityWelcomeBinding
@@ -25,8 +22,6 @@ class WelcomeActivity : AppCompatActivity() {
 
         setupView()
         setupAction()
-        playAnimation()
-
     }
 
 
@@ -43,41 +38,10 @@ class WelcomeActivity : AppCompatActivity() {
         }
 
         supportActionBar?.hide()
-
     }
-
 
     private fun setupAction() {
-
         binding.btRegister.setOnClickListener { startActivity(Intent(this, RegisterActivity::class.java)) }
         binding.btLogin.setOnClickListener { startActivity(Intent(this, LoginActivity::class.java)) }
-
     }
-
-    private fun playAnimation() {
-
-        ObjectAnimator.ofFloat(binding.ivBannerWelcome, View.TRANSLATION_X, -30f, 30f).apply {
-
-            repeatCount = ObjectAnimator.INFINITE
-            repeatMode = ObjectAnimator.REVERSE
-            duration = 5000
-
-        }.start()
-
-        val tvTitle = ObjectAnimator.ofFloat(binding.tvWelcomeTitle, View.ALPHA, 1f).setDuration(800)
-        val tvDescription = ObjectAnimator.ofFloat(binding.tvWelcomeDescription, View.ALPHA, 1f).setDuration(800)
-        val btSignup = ObjectAnimator.ofFloat(binding.btRegister, View.ALPHA, 1f).setDuration(800)
-        val btLogin = ObjectAnimator.ofFloat(binding.btLogin, View.ALPHA, 1f).setDuration(800)
-
-        val btTogether = AnimatorSet().apply {
-            playTogether(btSignup, btLogin)
-        }
-
-        AnimatorSet().apply {
-            playSequentially(tvTitle, tvDescription, btTogether)
-            start()
-        }
-
-    }
-
 }
