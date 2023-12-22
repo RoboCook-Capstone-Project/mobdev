@@ -53,4 +53,5 @@
     <string name="combine_two_recipes">Combine two recipes to get new recommendations!</string>
     <string name="favorite">Favorite</string>
     <string name="fusion_result">Fusion Result</string>
+    <string name="search">Search</string>
 </resources>
