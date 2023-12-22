@@ -7,6 +7,8 @@ Link of app demo video : https://youtu.be/QJWfLHurLlY?si=1mKlvCiHLZ2tNaKs
 
 Link of the final app APK file : https://drive.google.com/file/d/13Sf-08X1Ep66Z03PCK-xMP7Wtp6azp56/view?usp=sharing
 
+PS : For the best experience of using our app, we recommend you to disabled your phone's Dark Mode. 
+
 ---
 
 ### Mobile Development Task
