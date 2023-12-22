@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:menuCategory="container">
+
+        <item
+            android:id="@+id/optToasty"
+            android:icon="@drawable/ic_toasty"
+            android:title="Toasty"
+            app:showAsAction="collapseActionView|always" />
+
+        <item
+            android:id="@+id/optSearchFeature"
+            android:icon="@drawable/ic_search"
+            android:title="Search"
+            app:showAsAction="collapseActionView|always" />
+
+<!--        <item-->
+<!--            android:id="@+id/optAdd"-->
+<!--            android:icon="@drawable/ic_add"-->
+<!--            android:title="Add"-->
+<!--            app:showAsAction="collapseActionView|always" />-->
+
+        <item
+            android:id="@+id/optFavorite"
+            android:icon="@drawable/ic_favorite"
+            android:title="Favorite"
+            app:showAsAction="collapseActionView|always" />
+
+        <item
+            android:id="@+id/optLogout"
+            android:icon="@drawable/ic_logout"
+            android:title="Logout"
+            app:showAsAction="collapseActionView|always" />
+
+    </group>
+
+</menu>

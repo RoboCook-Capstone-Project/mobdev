@@ -1,1 +1,15 @@
-Ini adalah repository untuk aplikasi mobile Robocook. Akan ada dua branch pengerjaan, punya Ophi dan Razif. Semangat semua!!
+# Robocook.
+
+## Task Razif:
+- Welcome
+- Registration
+- Login and Logout
+- For You Page
+- Detail Recipe
+- Favorite Recipe and Add to Favorite
+
+## Task Ophi
+- Add Recipe
+- Toasty
+- Search
+- Fusion
